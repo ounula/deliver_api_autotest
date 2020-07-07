@@ -27,8 +27,8 @@ class TestLogin:
         data = eval(case["data"])
         # 请求头
         headers = eval(conf.get_str("env", "headers"))
-        if case["interface"] != "login":
-            headers["Authorization"] = getattr(TestData, "token_data")
+        # if case["interface"] != "login":
+        #     headers["Authorization"] = getattr(TestData, "token_data")
         # 预期结果
         expected = eval(case["expected"])
         # 请求方法

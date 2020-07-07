@@ -29,12 +29,9 @@ outFullName = os.path.join(down_dir, 'report.zip')
 def zip_report():
     """
     压缩报告
-    :param dirpath: 目标文件夹路径
-    :return: 无
     """
     if os.path.exists(outFullName):
         os.remove(outFullName)
-        print('ok')
     zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
     for path, dirnames, filenames in os.walk(html_report_dir):
         # 去掉目标跟路径，只对目标文件夹下边的文件及文件夹进行压缩
