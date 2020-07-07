@@ -8,7 +8,7 @@ from common.log import log
 import pytest
 from common import Shell
 import allure
-# from common.emails import mail
+from common.emails import mail
 
 
 if __name__ == "__main__":
@@ -48,3 +48,4 @@ if __name__ == "__main__":
     # time.sleep(5)
     # mail()
     pytest.main()
+    mail()
