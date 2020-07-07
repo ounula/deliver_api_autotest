@@ -8,8 +8,7 @@ from common.log import log
 import pytest
 from common import Shell
 import allure
-from common.emails import mail
-
+from common.emails import mail, zip_report
 
 if __name__ == "__main__":
     # file = os.path.basename(sys.argv[0])
@@ -48,4 +47,5 @@ if __name__ == "__main__":
     # time.sleep(5)
     # mail()
     pytest.main()
+    zip_report()
     mail()
