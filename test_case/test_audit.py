@@ -11,7 +11,7 @@
 import unittest
 import os
 import jsonpath
-from library.ddt import ddt, data
+# from library.ddt import ddt, data
 from common.readexcel import ReadExcel
 from common.config import testdatas_dir
 from common.handle_db import HandleDB
