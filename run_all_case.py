@@ -4,7 +4,7 @@
 import time
 import os
 import sys
-from common.Logs import Log
+from common.log import log
 import pytest
 from common import Shell
 import allure
@@ -13,7 +13,7 @@ from common.emails import mail
 
 if __name__ == "__main__":
     file = os.path.basename(sys.argv[0])
-    log = Log(file)
+    log = log(file)
     logger = log.Logger
     # 运行单个文件 pytest.main(['../test_case/test_login.py']) 运行多个文件 pytest.main(['../test_case/test_login_getVar.py',
     # '../test_case/test_login.py']) 运行整个目录 pytest.main(['../test_case', '--html=../report/report.html'])

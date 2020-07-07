@@ -3,7 +3,7 @@
 # time: 2020/7/3 8:11
 
 import pymysql
-from common.config import conf
+from common.get_conf import conf
 
 
 class HandleDB:

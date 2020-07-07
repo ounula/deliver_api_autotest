@@ -2,13 +2,30 @@
 # author: zhh
 # time: 2020/7/3 7:46
 import re
-from common.config import conf
+from common.get_conf import conf
+from common.config import testcase_path
+from common.readexcel import ReadExcel
+from common.handle_db import HandleDB
+from common.handle_request import HandleRequest
 
 
 class TestData:
     """这个类的作用：专门用来保存一些要替换的数据"""
     # member_id = ""
     pass
+
+
+class GetData:
+    def __init__(self, file_path, sheet_name):
+        self.file_path = file_path
+        self.sheet_name = sheet_name
+
+    def read_data(self, ):
+        excel = ReadExcel(self.file_path, self.sheet_name)
+        cases = excel.read_data()
+        http = HandleRequest()
+        db = HandleDB()
+        return cases, http, db
 
 
 def replace_data(data):
@@ -28,3 +45,7 @@ def replace_data(data):
             data = data.replace(item, getattr(TestData, key))
     # 返回替换好的数据
     return data
+
+
+if __name__ == '__main__':
+    print(GetData(testcase_path, 'login').read_data()[0])

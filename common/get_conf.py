@@ -1,7 +1,9 @@
 # -*- coding: UTF-8 –*-
 # author: zhh
-# time: 2020/7/2 14:19
+# time: 2020/7/7 9:24
 from configparser import ConfigParser
+import os
+from common.config import conf_dir
 
 
 class MyConf:
@@ -68,4 +70,5 @@ class MyConf:
         self.conf.write(open(self.filename, "w", encoding=self.encoding))
 
 
-
+conf_path = os.path.join(conf_dir, "conf.ini")
+conf = MyConf(conf_path)

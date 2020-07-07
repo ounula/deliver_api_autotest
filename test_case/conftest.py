@@ -2,35 +2,19 @@
 # author: zhh
 # time: 2020/7/2 17:33
 import pytest
-# from common.log import log
-# from selenium import webdriver
-# from common import config
 
 
-
-# # pytest.mark
-# def pytest_configure(config):
-#     marker_list = ["login"]  # 在此定义mark标签列表
-#     for markers in marker_list:
-#         config.addinivalue_line("markers", markers)
-#
-#
-# driver = None
-# log_url = conf.get_str('env', 'url')
-#
-#
-# # driver=webdriver.Chrome()
 # # 声明fixture，测试类前/后置操作
-# # 类：前置开启登录页面，后置关闭浏览器
-# @pytest.fixture(scope="class")
-# def access_web():
-#     global driver
-#     # 前置操作
-#     driver = BasePage.open_browser()
-#     lg = LoginPage(driver)
-#     yield driver, lg  # 分割线；返回值
-#     # 后置操作
-#     driver.quit()
+@pytest.fixture(scope="class")
+def read_test_data():
+    # 前置操作
+    excel = ReadExcel(file_path, "add")
+    cases = excel.read_data()
+    http = HandleRequest()
+    db = HandleDB()
+    yield driver, lg  # 分割线；返回值
+    # 后置操作
+    driver.quit()
 #
 #
 # # 用例：后置刷新

@@ -24,13 +24,15 @@ class Assertions:
         try:
             assert code == expected_code
             log.info(f"校验状态码, 预期结果：{expected_code}, 实际结果：{code} ，验证通过")
+            config.result_list.append('true')
             # return True
-        except Exception as e:
+        except AssertionError as e:
             log.error(f"校验状态码, 预期结果：{expected_code}, 实际结果：{code} ，验证失败")
             config.result_list.append('fail')
             raise e
 
-    def assert_body(self, body, body_msg, expected_msg):
+    @staticmethod
+    def assert_body(body, body_msg, expected_msg):
         """
         验证response body中任意属性的值
         :param body:
@@ -41,18 +43,13 @@ class Assertions:
         try:
             msg = body[body_msg]
             assert msg == expected_msg
-            self.logger.info(
-                "Response body msg == expected_msg, expected_msg is %s, body_msg is %s" % (
-                    expected_msg, body[body_msg]))
+            log.info(f"校验响应体{body_msg}, 预期结果：{expected_msg}, 实际结果：{body[body_msg]} ，验证通过")
             # return True
 
-        except:
-            self.logger.error(
-                "Response body msg != expected_msg, expected_msg is %s, body_msg is %s" % (
-                    expected_msg, body[body_msg]))
-            Consts.RESULT_LIST.append('fail')
-
-            raise
+        except AssertionError as e:
+            log.error(f"校验响应体{body_msg}, 预期结果：{expected_msg}, 实际结果：{body[body_msg]} ，验证失败")
+            config.result_list.append('fail')
+            raise e
 
     def assert_in_text(self, body, expected_msg):
         """
@@ -66,12 +63,13 @@ class Assertions:
             # print(text)
             assert expected_msg in text
             # return True
+            log.info(f"校验响应体包含{expected_msg}, 验证成功")
 
-        except:
-            self.logger.error("Response body Does not contain expected_msg, expected_msg is %s" % expected_msg)
-            Consts.RESULT_LIST.append('fail')
+        except AssertionError as e:
+            log.error(f"校验响应体不包含{expected_msg}, 验证失败")
+            config.result_list.append('fail')
 
-            raise
+            raise e
 
     def assert_text(self, body, expected_msg):
         """
@@ -84,11 +82,11 @@ class Assertions:
             assert body == expected_msg
             # return True
 
-        except:
-            self.logger.error("Response body != expected_msg, expected_msg is %s, body is %s" % (expected_msg, body))
-            Consts.RESULT_LIST.append('fail')
+        except AssertionError as e:
+            log.error("Response body != expected_msg, expected_msg is %s, body is %s" % (expected_msg, body))
+            config.result_list.append('fail')
 
-            raise
+            raise e
 
     def assert_time(self, time, expected_time):
         """
@@ -101,7 +99,7 @@ class Assertions:
             assert time < expected_time
             # return True
 
-        except:
-            self.logger.error("Response time > expected_time, expected_time is %s, time is %s" % (expected_time, time))
-            Consts.RESULT_LIST.append('fail')
-            raise
+        except AssertionError as e:
+            log.error("Response time > expected_time, expected_time is %s, time is %s" % (expected_time, time))
+            config.result_list.append('fail')
+            raise e
