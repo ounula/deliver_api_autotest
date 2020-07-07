@@ -8,7 +8,7 @@ from common.log import log
 import pytest
 from common import Shell
 import allure
-from common.emails import mail
+# from common.emails import mail
 
 
 if __name__ == "__main__":
