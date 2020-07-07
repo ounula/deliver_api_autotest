@@ -4,7 +4,7 @@ import os
 import jsonpath
 from common.assertions import Assertions
 from common.readexcel import ReadExcel
-from common.config import testdatas_dir
+from common.config import testdatas_dir,result_list
 from common.get_conf import conf
 from common.handle_data import replace_data, TestData, GetData
 from common.handle_request import HandleRequest
@@ -52,7 +52,8 @@ class TestLogin:
         #     setattr(TestData, "admin_member_id", str(id))
         # 第三步：断言
         try:
-            assertions.assert_code(json_data['code'],expected["code"],)
+            assertions.assert_code(json_data['code'],expected["code"])
+            result_list.append('pass')
         # 判断是否需要sql校验
         # if case["check_sql"]:
         #     sql = replace_data(case["check_sql"])
