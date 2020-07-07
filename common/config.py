@@ -44,7 +44,11 @@ logs_dir = os.path.join(os.path.join(base_dir, "outputs"), "logs")
 # 截图
 screenshot_dir = os.path.join(os.path.join(base_dir, "outputs"), "screenshots")
 
+#allure报告路径
 allure_report_dir = os.path.join(os.path.join(base_dir, "outputs"), "allure_reports")
+
+#下载路径
+down_dir = os.path.join(os.path.join(base_dir, "outputs"), "downloads")
 
 if __name__ == '__main__':
     print(allure_report_dir)
