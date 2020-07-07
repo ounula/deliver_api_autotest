@@ -53,12 +53,11 @@ def mail():
         msg['To'] = my_user  # 设置收件人
         msg['Subject'] = '接口测试报告'
 
-        result_body = result_list
-        len_result = len(result_body)
+        len_result = len(result_list)
         T = 0
         F = 0
         Error = 0
-        for r in result_body:
+        for r in result_list:
             if r == 'pass':
                 T = T + 1
             if r == 'fail':
@@ -68,14 +67,14 @@ def mail():
         else:
             Error = len_result - F - T
 
-        rate = (float(T) / (float(len_result) * 100 + 1))
+        rate = "%.2f%%" % (T/len_result*100)
         # 正文内容
         # content = '\n本次接口自动化报告如下: \n' + '执行时间：' + time.ctime() + '\n' + '执行脚本数为：' + str(
         #     len_result) + ', ' + '成功数为：' + str(T) + ', ' + '失败数为：' + str(F) + ', ' + '异常数：' + str(
         #     Error) + '。\n ' + '通过率为： ' + str(rate) + '% '
         content = f'本次自动化测试结果如下：' \
                   f'\n\n执行时间：{time.ctime()}' \
-                  f'\n\n执行用例数：{len_result}，用例执行通过数：{T}，失败数：{F}，异常数：{Error}。测试用例通过率为：{rate}%。'\
+                  f'\n\n执行用例数：{len_result}，用例执行通过数：{T}，失败数：{F}，异常数：{Error}。测试用例通过率为：{rate}。'\
                   f'\n\n本次测试已完成，请及时打开链接并登录Jenkins查看测试报告：{conf.get_str("env", "report_address")}' \
                   f'\n\n若您不在内网环境，请下载附件并解压，打开html_report.html文件以查看报告。'
         text = email.mime.text.MIMEText(content)
