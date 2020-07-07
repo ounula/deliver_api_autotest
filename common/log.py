@@ -3,8 +3,8 @@
 # time: 2020/7/2 14:19
 import os
 import logging
-from common.config import conf, logs_dir
-# from common.config import conf
+from common.get_conf import conf
+from common.config import logs_dir
 import time
 
 # 读取配置文件中的数据

@@ -20,7 +20,7 @@ class GetData:
         self.file_path = file_path
         self.sheet_name = sheet_name
 
-    def read_data(self, ):
+    def read_data(self ):
         excel = ReadExcel(self.file_path, self.sheet_name)
         cases = excel.read_data()
         http = HandleRequest()
