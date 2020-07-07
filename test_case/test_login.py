@@ -36,9 +36,9 @@ class TestLogin:
         # 用例所在的行
         row = case["case_id"] + 1
         # 第二步：发送请求
-        if case["check_sql"]:
-            sql = replace_data(case["check_sql"])
-            s_loan_num = self.data_dict['db'].count(sql)
+        # if case["check_sql"]:
+        #     sql = replace_data(case["check_sql"])
+        #     s_loan_num = self.data_dict['db'].count(sql)
 
         res = self.data_dict['http'].send(url=url, method=method, data=data, headers=headers)
         json_data = res.json()
