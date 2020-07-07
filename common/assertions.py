@@ -24,7 +24,6 @@ class Assertions:
         try:
             assert code == expected_code
             log.info(f"校验状态码, 预期结果：{expected_code}, 实际结果：{code} ，验证通过")
-            config.result_list.append('true')
             # return True
         except AssertionError as e:
             log.error(f"校验状态码, 预期结果：{expected_code}, 实际结果：{code} ，验证失败")
