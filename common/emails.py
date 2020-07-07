@@ -53,7 +53,7 @@ def mail():
         # content = '\n本次接口自动化报告如下: \n' + '执行时间：' + time.ctime() + '\n' + '执行脚本数为：' + str(
         #     len_result) + ', ' + '成功数为：' + str(T) + ', ' + '失败数为：' + str(F) + ', ' + '异常数：' + str(
         #     Error) + '。\n ' + '通过率为： ' + str(rate) + '% '
-        content = f'本次测试已完成，请及时打开{conf.get_str("env","report_address ")}查看测试报告'
+        content = f'本次测试已完成，请及时打开{conf.get_str("env","report_address")}查看测试报告'
         text = email.mime.text.MIMEText(content)
         # 随便找的html文件，后面两个参数是告诉程序以html格式和utf-8字符
         msg.attach(text)
